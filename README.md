@@ -27,7 +27,7 @@ NONE
     - hosts: servers
       roles:
       - role: hudecof.ovirt-guest-agent
-        when: "ansible_virtualization_type == 'kvm'"
+        when: "ansible_virtualization_type == 'kvm'and ansible_virtualization_role == 'guest'"
 
 # License
 

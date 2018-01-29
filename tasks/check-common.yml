@@ -1,9 +1,11 @@
 ---
 - name: check virtualization type
   assert:
-    msg: "virtualization is not KVM"
+    msg: "virtualization is not kvm guest"
     that:
+      - "ansible_virtualization_role == 'guest'"
       - "ansible_virtualization_type == 'kvm'"
+
 
 - name: check the presense of the guest agetfile
   stat:

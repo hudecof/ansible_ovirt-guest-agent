@@ -1,0 +1,40 @@
+---
+
+- name: tweak configuration file
+  ini_file:
+    path: "{{ ovirt_guest_agent_conf }}"
+    section: virtio
+    option: device
+    value: "/dev/virtio-ports/{{ ovirt_guest_agent_device }}"
+    create: yes
+    backup: no
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - restart ovirt agent
+  when: "'conf' in ovirt_guest_agent_fix"
+
+- name: tweak udev
+  lineinfile:
+    path: "{{ ovirt_guest_agent_udev }}"
+    regexp: '{{ ovirt_guest_agent_device }}'
+    line: 'SYMLINK=="virtio-ports/{{ ovirt_guest_agent_device }}", OWNER="{{ ovirt_guest_agent_user }}", GROUP="{{ ovirt_guest_agent_group }}"'
+    state: present
+    create: yes
+    backup: no
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - reload virtio udev
+    - restart ovirt agent
+  when: "'udev' in ovirt_guest_agent_fix"
+
+- name: fix log dircotry permission
+  file:
+    state: directory
+    path: "{{ ovirt_guest_agent_log }}"
+    owner: "{{ ovirt_guest_agent_user }}"
+    group: "{{ ovirt_guest_agent_group }}"
+    mode: "0755"

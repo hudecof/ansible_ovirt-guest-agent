@@ -1,0 +1,15 @@
+---
+- name: check virtualization type
+  assert:
+    msg: "virtualization is not KVM"
+    that:
+      - "ansible_virtualization_type == 'kvm'"
+
+- name: check the presense of the guest agetfile
+  stat:
+    path: "/dev/virtio-ports/{{ ovirt_guest_agent_device }}"
+  register: ovirt_guest_agent_socket
+
+- assert:
+    that: ovirt_guest_agent_socket.stat.islnk is defined and ovirt_guest_agent_socket.stat.islnk
+    msg: "{{ ovirt_guest_agent_socket.stat.path }} is not symlink"

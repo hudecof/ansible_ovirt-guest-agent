@@ -1,0 +1,16 @@
+---
+# defaults file for hudecof.ovirt-guest-agent
+
+ovirt_guest_agent_packages: "{{ __ovirt_guest_agent_packages }}"
+
+ovirt_guest_agent_service: "{{ __ovirt_guest_agent_service }}"
+ovirt_guest_agent_service_enabled: "yes"
+ovirt_guest_agent_service_state: "started"
+
+ovirt_guest_agent_fix: "{{ __ovirt_guest_agent_fix }}"
+ovirt_guest_agent_device:  ovirt-guest-agent.0
+ovirt_guest_agent_conf: "{{ __ovirt_guest_agent_conf }}"
+ovirt_guest_agent_udev: "{{ __ovirt_guest_agent_udev }}"
+ovirt_guest_agent_user: "{{ __ovirt_guest_agent_user }}"
+ovirt_guest_agent_group: "{{ __ovirt_guest_agent_group }}"
+ovirt_guest_agent_log: "{{ __ovirt_guest_agent_log }}"

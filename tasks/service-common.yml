@@ -1,0 +1,6 @@
+---
+- name: "enable service"
+  service:
+    name: "{{ ovirt_guest_agent_service }}"
+    enabled: "{{ ovirt_guest_agent_service_enabled }}"
+    state: "{{ ovirt_guest_agent_service_state }}"

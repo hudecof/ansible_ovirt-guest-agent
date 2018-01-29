@@ -1,0 +1,41 @@
+---
+# tasks file for hudecof.ovirt-guest-agent
+
+- name: include packages tasks
+  include: check-common.yml
+  tags:
+    - ovirt-guest-agent
+    - ovirt-guest-agent:check
+
+
+- name: "set os specific variables"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "os-{{ ansible_distribution }}.yml"
+  tags:
+    - ovirt-guest-agent
+    - ovirt-guest-agent:packages
+    - ovirt-guest-agent:setup
+    - ovirt-guest-agent:service
+
+- name: include packages tasks
+  include: packages-{{ ansible_os_family }}.yml
+  tags:
+    - ovirt-guest-agent
+    - ovirt-guest-agent:packages
+
+
+- name: include setup tasks
+  include: setup-common.yml
+  tags:
+    - ovirt-guest-agent
+    - ovirt-guest-agent:setup
+
+- name: include service tasks
+  include: service-common.yml
+  tags:
+    - ovirt-guest-agent
+    - ovirt-guest-agent:service

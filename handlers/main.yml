@@ -1,0 +1,10 @@
+---
+# handlers file for hudecof.ovirt-guest-agent
+
+- name: "reload virtio udev"
+  command: udevadm trigger --subsystem-match="virtio-ports"
+
+- name: "restart ovirt agent"
+  service:
+    name: "{{ ovirt_guest_agent_service }}"
+    state: restarted

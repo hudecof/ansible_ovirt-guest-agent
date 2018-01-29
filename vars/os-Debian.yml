@@ -1,0 +1,11 @@
+---
+
+__ovirt_guest_agent_packages:
+  - {'name': 'ovirt-guest-agent', 'state': 'present'}
+__ovirt_guest_agent_service: ovirt-guest-agent
+__ovirt_guest_agent_fix: ['udev', 'conf']
+__ovirt_guest_agent_conf: /etc/ovirt-guest-agent.conf
+__ovirt_guest_agent_udev: /etc/udev/rules.d/55-ovirt-guest-agent.rules
+__ovirt_guest_agent_user: ovirtagent
+__ovirt_guest_agent_group: ovirtagent
+__ovirt_guest_agent_log: /var/log/ovirt-guest-agent

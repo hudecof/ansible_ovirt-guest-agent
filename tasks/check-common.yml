@@ -14,5 +14,7 @@
 
 - name: "check if the device file exists"
   assert:
-    that: ovirt_guest_agent_socket.stat.islnk is defined and ovirt_guest_agent_socket.stat.islnk
-    msg: "{{ ovirt_guest_agent_socket.stat.path }} is not symlink"
+    that:
+      - ovirt_guest_agent_socket.stat.exists
+      - ovirt_guest_agent_socket.stat.islnk
+    msg: "{{ ovirt_guest_agent_device }} is not symlink"

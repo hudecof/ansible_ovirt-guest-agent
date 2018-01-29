@@ -12,6 +12,7 @@
     path: "/dev/virtio-ports/{{ ovirt_guest_agent_device }}"
   register: ovirt_guest_agent_socket
 
-- assert:
+- name: "check if the device file exists"
+  assert:
     that: ovirt_guest_agent_socket.stat.islnk is defined and ovirt_guest_agent_socket.stat.islnk
     msg: "{{ ovirt_guest_agent_socket.stat.path }} is not symlink"

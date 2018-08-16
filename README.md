@@ -3,12 +3,11 @@
 
 Installationand confuguration of the ovirt guest agent.
 
-# Requirements
+## Requirements
 
 For Redat based OS **epel** is required, but I do not put in in depencency.
 
-# Role Variables
---------------
+## Role Variables
 
 ## ovirt_guest_agent_device
 
@@ -16,24 +15,22 @@ For Redat based OS **epel** is required, but I do not put in in depencency.
 For older relases of the **oVrt** should be changed into `com.redhat.rhevm.vdsm`.
 
 
-# Dependencies
-------------
+##  Dependencies
 
 NONE
 
-# Example Playbook
+## Example Playbook
 
 
     - hosts: servers
       roles:
-      - role: hudecof.ovirt-guest-agent
+      - role: hudecof.ovirt_guest_agent
         when: "ansible_virtualization_type == 'kvm'and ansible_virtualization_role == 'guest'"
 
-# License
+## License
 
 BSD
 
-# Author Information
+## Author Information
 
 Peter Hudec
-CNC, a.s.

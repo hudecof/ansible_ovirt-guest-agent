@@ -1,10 +1,8 @@
 galaxy_info:
+  role_name: ovirt-guest-agent
   author: Peter Hudec
   description: ovirt guest agent managment
-  company: CNC, a.s.
-
   license: BDS
-
   min_ansible_version: 2.3
   platforms:
   - name: EL
@@ -13,15 +11,12 @@ galaxy_info:
     - 7
   - name: Ubuntu
     versions:
-    - trusty
     - xenial
+    - bionic
   - name: Debian
     versions:
     - stretch
     - jessie
-
-
-
   galaxy_tags:
     - ovirt
     - system

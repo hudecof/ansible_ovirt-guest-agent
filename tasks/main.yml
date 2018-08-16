@@ -16,10 +16,7 @@
     - "os-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - "os-{{ ansible_distribution }}.yml"
   tags:
-    - ovirt-guest-agent
-    - ovirt-guest-agent:packages
-    - ovirt-guest-agent:setup
-    - ovirt-guest-agent:service
+    - always
 
 - name: include packages tasks
   include: packages-{{ ansible_os_family }}.yml

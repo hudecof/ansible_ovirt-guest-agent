@@ -7,7 +7,7 @@
       - "ansible_virtualization_type == 'kvm'"
 
 
-- name: check the presense of the guest agetfile
+- name: check the presense of the guest agent file
   stat:
     path: "/dev/virtio-ports/{{ ovirt_guest_agent_device }}"
   register: ovirt_guest_agent_socket
